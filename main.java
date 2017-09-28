@@ -13,7 +13,7 @@ public class main {
         int userwin = 0;
         int dealwin = 0;
         int tiegames = 0;
-        int percentage = 0;
+        float percentage = 0;
         int newgame = 1;
         String card;
 
@@ -26,7 +26,7 @@ public class main {
             if(newgame == 1) {
                 game++;
                 System.out.println("");
-                System.out.println("START GAME #" +game+ "");    //REMEMBER TO NOT DO START GAME EVERYTIMR
+                System.out.println("START GAME #" +game+ "");
                 newgame = 0;
             }
 
@@ -77,25 +77,6 @@ public class main {
                 newgame = 1;
             }
 
-            if(dealhand == 21){
-                System.out.println( "BLACKJACK! Dealer Wins");
-                dealwin++;
-                userhand = 0;
-                dealhand = 0;
-                newgame = 1;
-            }
-
-            if(dealhand == 21)
-            {
-                System.out.println( "BLACKJACK! You Win! ");
-                userwin++;
-                userhand = 0;
-                dealhand = 0;
-                newgame = 1;
-            }
-
-
-
 
             if(userhand != 0) {
 
@@ -129,10 +110,12 @@ public class main {
                         userhand = 0;
                         dealhand = 0;
                         newgame = 1;
+                        userwin++;
                     }
                     else if (userhand > dealhand) {
                         System.out.println("You win!");
                         System.out.println("");
+                        userwin++;
 
                     } else if (dealhand > userhand) {
                         System.out.println("Dealer wins!");
@@ -140,6 +123,7 @@ public class main {
                         userhand = 0;
                         dealhand = 0;
                         newgame = 1;
+                        dealwin++;
 
                     } else {
                         System.out.println("It's a tie! No one wins!");
@@ -152,12 +136,11 @@ public class main {
                     System.out.println("Number of Dealer wins: " + dealwin + "");
                     System.out.println("Number of tie games: " + tiegames + "");
                     System.out.println("Total # of games played is: " + game + "");
-
-
-                    percentage = (userwin / game) * 100;
-
+                    percentage = (((float)userwin / (float)game) * 100);
                     System.out.println("Percentage of Player wins: " + percentage + "%");
-                } else
+                }
+
+                else
                     System.out.println("");
 
 
