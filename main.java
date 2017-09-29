@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
 public class main {
@@ -91,6 +92,17 @@ public class main {
 
                 userinput = myscanner.nextInt();
 
+        /*
+                while (userinput <= 0 && userinput >= 4) {
+                    try {
+                        System.out.print("Enter the number of students: ");
+                        userinput = myscanner.nextInt();
+                    }
+                    catch (InputMismatchException e) {
+                        System.out.print("Enter the number of students");
+                    }
+                }
+        */
                 if (userinput == 4) {
                     break;
                 }
