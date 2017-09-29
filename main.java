@@ -15,69 +15,65 @@ public class main {
         int tiegames = 0;
         float percentage = 0;
         int newgame = 1;
-        String card;
-
+        boolean stat = true;
 
         Scanner myscanner = new Scanner(System.in);
         Random rand = new Random();
 
         while(userinput != 4)
         {
-            if(newgame == 1) {
-                game++;
+
+            while(stat) {
+
+
+                if (newgame == 1) {
+                    game++;
+                    System.out.println("");
+                    System.out.println("START GAME #" + game + "");
+                    newgame = 0;
+                }
+
                 System.out.println("");
-                System.out.println("START GAME #" +game+ "");
-                newgame = 0;
-            }
 
-            System.out.println( "");
+                usercard = rand.nextInt(13) + 1;
+                //  dealcard = rand.nextInt(13)+1;
 
-            usercard = rand.nextInt(13)+1;
-          //  dealcard = rand.nextInt(13)+1;
+                if (usercard == 1) {
+                    System.out.println("Your card is an ACE!");
+                } else if (usercard == 11) {
+                    System.out.println("Your card is a JACK!");
+                    usercard = 10;
+                } else if (usercard == 12) {
+                    System.out.println("Your card is a QUEEN!");
+                    usercard = 10;
+                } else if (usercard == 13) {
+                    System.out.println("Your card is a King!");
+                    usercard = 10;
+                } else {
+                    if (usercard == 8)
+                        System.out.println("Your card is an " + usercard + "!");
+                    else
+                        System.out.println("Your card is a " + usercard + "!");
+                }
 
-            if(usercard == 1) {
-                System.out.println("Your card is an ACE!");
-                card = "ACE";
-            }
-            else if(usercard == 11) {
-                System.out.println("Your card is a JACK!");
-                card = "JACK";
-                usercard = 10;
-            }
-            else if(usercard == 12) {
-                System.out.println("Your card is a QUEEN!");
-                card = "QUEEN";
-                usercard = 10;
-            }
-            else if(usercard == 13) {
-                System.out.println("Your card is a King!");
-                card = "King";
-                usercard = 10;
-            }
-            else {
-                if(usercard == 8)
-                    System.out.println("Your card is an " + usercard + "!");
-                else
-                System.out.println("Your card is a " + usercard + "!");
-            }
+                if (dealcard == 11 || dealcard == 12 || dealcard == 13) {
+                    dealcard = 10;
+                }
 
-            if(dealcard == 11 || dealcard == 12 || dealcard == 13){
-                dealcard = 10;
+                userhand = userhand + usercard;
+                dealhand = dealcard + dealhand;
+                System.out.println("Your hand is: " + userhand + "");
+
+                if (userhand > 21) {
+                    System.out.println("You exceeded 21! You Lose :(");
+                    dealwin++;
+                    userhand = 0;
+                    dealhand = 0;
+                    newgame = 1;
+                }
+                stat = false;
             }
-
-            userhand = userhand + usercard;
-            dealhand = dealcard + dealhand;
-            System.out.println("Your hand is: " +userhand+ "");
-
-            if(userhand > 21){
-                System.out.println( "You exceeded 21! You Lose :(");
-                dealwin++;
-                userhand = 0;
-                dealhand = 0;
-                newgame = 1;
-            }
-
-
+                stat = true;
             if(userhand != 0) {
 
 
@@ -135,9 +131,14 @@ public class main {
                     System.out.println("Number of Player wins: " + userwin + "");
                     System.out.println("Number of Dealer wins: " + dealwin + "");
                     System.out.println("Number of tie games: " + tiegames + "");
+                    game--;
+
                     System.out.println("Total # of games played is: " + game + "");
                     percentage = (((float)userwin / (float)game) * 100);
                     System.out.println("Percentage of Player wins: " + percentage + "%");
+                    stat = false;
+                    game++;
+
                 }
 
                 else
