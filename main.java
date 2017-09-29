@@ -18,7 +18,7 @@ public class main {
         int newgame = 1;
         boolean stat = true;
 
-        Scanner myscanner = new Scanner(System.in);
+     //   Scanner myscanner = new Scanner(System.in);
         Random rand = new Random();
 
         while(userinput != 4)
@@ -72,7 +72,20 @@ public class main {
                     dealhand = 0;
                     newgame = 1;
                 }
+
+                if(userhand == 21)
+                {
+                System.out.println( "BLACKJACK! You Win! ");
+                userwin++;
+                userhand = 0;
+                dealhand = 0;
+                newgame = 1;
+                  }
+
+
                 stat = false;
+
+
             }
                 stat = true;
             if(userhand != 0) {
@@ -87,22 +100,46 @@ public class main {
 
                 System.out.print("Choose an option: ");
                 System.out.print("");
-                System.out.print("");
 
 
-                userinput = myscanner.nextInt();
 
-        /*
-                while (userinput <= 0 && userinput >= 4) {
+
+                userinput = 0;
+                while (userinput == 0) {
+                    Scanner myscanner = new Scanner(System.in);
                     try {
-                        System.out.print("Enter the number of students: ");
                         userinput = myscanner.nextInt();
                     }
                     catch (InputMismatchException e) {
-                        System.out.print("Enter the number of students");
+                     userinput = 0;
+                     /*
+                        System.out.println("\nInvalid Input!\nPlease enter enter an Integer value between 0 and 4");
+                        System.out.println("");
+                        System.out.println("1. Get another card");
+                        System.out.println("2. Hold hand");
+                        System.out.println("3. Print statistics");
+                        System.out.println("4. Exit");
+
+                        System.out.print("Choose an option: ");
+                        System.out.print("");
+
+                        */
+
+                    }
+                    if(userinput > 4 || userinput <= 0){
+                        userinput = 0;
+                        System.out.println("\nInvalid Input!\nPlease enter enter an Integer value between 0 and 4");
+                        System.out.println("");
+                        System.out.println("1. Get another card");
+                        System.out.println("2. Hold hand");
+                        System.out.println("3. Print statistics");
+                        System.out.println("4. Exit");
+
+                        System.out.print("Choose an option: ");
+                        System.out.print("");
                     }
                 }
-        */
+
                 if (userinput == 4) {
                     break;
                 }
