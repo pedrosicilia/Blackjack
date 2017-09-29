@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
@@ -66,7 +67,7 @@ public class main {
                 System.out.println("Your hand is: " + userhand + "");
 
                 if (userhand > 21) {
-                    System.out.println("You exceeded 21! You Lose :(");
+                    System.out.println("\nYou exceeded 21! You Lose :(");
                     dealwin++;
                     userhand = 0;
                     dealhand = 0;
@@ -75,7 +76,7 @@ public class main {
 
                 if(userhand == 21)
                 {
-                System.out.println( "BLACKJACK! You Win! ");
+                System.out.println( "\nBLACKJACK! You Win! ");
                 userwin++;
                 userhand = 0;
                 dealhand = 0;
@@ -98,7 +99,7 @@ public class main {
                 System.out.println("3. Print statistics");
                 System.out.println("4. Exit");
 
-                System.out.print("Choose an option: ");
+                System.out.print("\nChoose an option: ");
                 System.out.print("");
 
 
@@ -135,7 +136,7 @@ public class main {
                         System.out.println("3. Print statistics");
                         System.out.println("4. Exit");
 
-                        System.out.print("Choose an option: ");
+                        System.out.print("\nChoose an option: ");
                         System.out.print("");
                     }
                 }
@@ -148,22 +149,22 @@ public class main {
 
                     dealhand = rand.nextInt(26-16)+16;
 
-                    System.out.println("Dealer's hand: " + dealhand + "");
+                    System.out.println("\nDealer's hand: " + dealhand + "");
                     System.out.println("Your hand is: " + userhand + "");
                     if(dealhand > 21){
-                        System.out.println("You win!");
+                        System.out.println("\nYou win!");
                         userhand = 0;
                         dealhand = 0;
                         newgame = 1;
                         userwin++;
                     }
                     else if (userhand > dealhand) {
-                        System.out.println("You win!");
+                        System.out.println("\nYou win!");
                         System.out.println("");
                         userwin++;
 
                     } else if (dealhand > userhand) {
-                        System.out.println("Dealer wins!");
+                        System.out.println("\nDealer wins!");
                         System.out.println("");
                         userhand = 0;
                         dealhand = 0;
@@ -171,8 +172,10 @@ public class main {
                         dealwin++;
 
                     } else {
-                        System.out.println("It's a tie! No one wins!");
+                        System.out.println("\nIt's a tie! No one wins!");
                         tiegames++;
+                        userhand = 0;
+                        dealhand = 0;
                         newgame = 1;
 
                     }
@@ -184,14 +187,19 @@ public class main {
 
                     System.out.println("Total # of games played is: " + game + "");
                     percentage = (((float)userwin / (float)game) * 100);
-                    System.out.println("Percentage of Player wins: " + percentage + "%");
+
+                    DecimalFormat numberFormat = new DecimalFormat("#.0");
+                    //System.out.println(numberFormat.format(percentage));
+
+
+                    System.out.println("Percentage of Player wins: " + numberFormat.format(percentage) + "%");
                     stat = false;
                     game++;
 
                 }
 
-                else
-                    System.out.println("");
+             //   else
+                  //  System.out.println("");
 
 
             }
